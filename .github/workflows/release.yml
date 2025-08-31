@@ -14,10 +14,10 @@ jobs:
       - name: Checkout VoiceInk
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Ensure Dependencies
         run: |
-          brew update
-          brew install cmake
+          brew --version
+          cmake --version
 
       - name: Build whisper.cpp XCFramework
         run: |
