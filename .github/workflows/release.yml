@@ -1,0 +1,64 @@
+name: Build VoiceInk
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout VoiceInk
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          brew update
+          brew install cmake
+
+      - name: Build whisper.cpp XCFramework
+        run: |
+          git clone https://github.com/ggerganov/whisper.cpp.git
+          cd whisper.cpp
+          ./build-xcframework.sh
+          ls build-apple
+
+      - name: Add whisper.xcframework to VoiceInk
+        run: |
+          mkdir -p VoiceInk/Frameworks
+          cp -R whisper.cpp/build-apple/whisper.xcframework VoiceInk/Frameworks/
+
+      - name: Build VoiceInk (Universal Binary)
+        run: |
+          xcodebuild -project VoiceInk/VoiceInk.xcodeproj \
+            -scheme VoiceInk \
+            -sdk macosx \
+            -configuration Release \
+            ARCHS="arm64 x86_64" \
+            ONLY_ACTIVE_ARCH=NO \
+            build
+
+      - name: Run Tests
+        run: |
+          xcodebuild test \
+            -project VoiceInk/VoiceInk.xcodeproj \
+            -scheme VoiceInk \
+            -sdk macosx \
+            -configuration Debug \
+            ARCHS="arm64 x86_64" \
+            ONLY_ACTIVE_ARCH=NO
+
+      - name: Package App
+        run: |
+          APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -type d -name "*.app" | head -n 1)
+          mkdir -p build_artifacts
+          cp -R "$APP_PATH" build_artifacts/VoiceInk.app
+
+      - name: Upload App Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceInk-macOS-Universal
+          path: build_artifacts/VoiceInk.app
