@@ -70,7 +70,7 @@ struct DynamicSidebar: View {
                         .cornerRadius(8)
                 }
                 
-                Text("VoiceInk")
+                Text("VoiceInk Lite")
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
