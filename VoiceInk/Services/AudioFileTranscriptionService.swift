@@ -17,7 +17,7 @@ class AudioTranscriptionService: ObservableObject {
     // Transcription services
     private let localTranscriptionService: LocalTranscriptionService
     private lazy var cloudTranscriptionService = CloudTranscriptionService()
-    private lazy var nativeAppleTranscriptionService = NativeAppleTranscriptionService()
+    //private lazy var nativeAppleTranscriptionService = NativeAppleTranscriptionService()
     private lazy var parakeetTranscriptionService = ParakeetTranscriptionService(customModelsDirectory: whisperState.parakeetModelsDirectory)
     
     enum TranscriptionError: Error {
@@ -53,8 +53,8 @@ class AudioTranscriptionService: ObservableObject {
                 text = try await localTranscriptionService.transcribe(audioURL: url, model: model)
             case .parakeet:
                 text = try await parakeetTranscriptionService.transcribe(audioURL: url, model: model)
-            case .nativeApple:
-                text = try await nativeAppleTranscriptionService.transcribe(audioURL: url, model: model)
+//            case .nativeApple:
+//                text = try await nativeAppleTranscriptionService.transcribe(audioURL: url, model: model)
             default: // Cloud models
                 text = try await cloudTranscriptionService.transcribe(audioURL: url, model: model)
             }

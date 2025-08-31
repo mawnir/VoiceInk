@@ -58,7 +58,7 @@ class WhisperState: NSObject, ObservableObject {
     // Transcription Services
     private var localTranscriptionService: LocalTranscriptionService!
     private lazy var cloudTranscriptionService = CloudTranscriptionService()
-    private lazy var nativeAppleTranscriptionService = NativeAppleTranscriptionService()
+    //private lazy var nativeAppleTranscriptionService = NativeAppleTranscriptionService()
     private lazy var parakeetTranscriptionService = ParakeetTranscriptionService(customModelsDirectory: parakeetModelsDirectory)
     
     private var modelUrl: URL? {
@@ -260,8 +260,8 @@ class WhisperState: NSObject, ObservableObject {
                 transcriptionService = localTranscriptionService
                     case .parakeet:
             transcriptionService = parakeetTranscriptionService
-            case .nativeApple:
-                transcriptionService = nativeAppleTranscriptionService
+//            case .nativeApple:
+//                transcriptionService = nativeAppleTranscriptionService
             default:
                 transcriptionService = cloudTranscriptionService
             }
