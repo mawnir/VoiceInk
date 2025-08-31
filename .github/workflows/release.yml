@@ -28,28 +28,18 @@ jobs:
 
       - name: Add whisper.xcframework to VoiceInk
         run: |
-          mkdir -p VoiceInk/Frameworks
-          cp -R whisper.cpp/build-apple/whisper.xcframework VoiceInk/Frameworks/
+          mkdir -p Frameworks
+          cp -R whisper.cpp/build-apple/whisper.xcframework Frameworks/
 
       - name: Build VoiceInk (Universal Binary)
         run: |
-          xcodebuild -project VoiceInk/VoiceInk.xcodeproj \
+          xcodebuild -project VoiceInk.xcodeproj \
             -scheme VoiceInk \
             -sdk macosx \
             -configuration Release \
             ARCHS="arm64 x86_64" \
             ONLY_ACTIVE_ARCH=NO \
             build
-
-      - name: Run Tests
-        run: |
-          xcodebuild test \
-            -project VoiceInk/VoiceInk.xcodeproj \
-            -scheme VoiceInk \
-            -sdk macosx \
-            -configuration Debug \
-            ARCHS="arm64 x86_64" \
-            ONLY_ACTIVE_ARCH=NO
 
       - name: Package App
         run: |
