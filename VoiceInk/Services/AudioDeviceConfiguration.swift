@@ -4,7 +4,7 @@ import CoreAudio
 import os
 
 class AudioDeviceConfiguration {
-    private static let logger = Logger(subsystem: "com.mawn.voicelnklight", category: "AudioDeviceConfiguration")
+    private static let logger = Logger(subsystem: "com.mawn.Voicelite", category: "AudioDeviceConfiguration")
 
     static func getDefaultInputDevice() -> AudioDeviceID? {
         var defaultDeviceID = AudioDeviceID(0)

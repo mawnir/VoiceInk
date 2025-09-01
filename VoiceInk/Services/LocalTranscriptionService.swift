@@ -5,7 +5,7 @@ import os
 class LocalTranscriptionService: TranscriptionService {
     
     private var whisperContext: WhisperContext?
-    private let logger = Logger(subsystem: "com.mawn.voicelnklight", category: "LocalTranscriptionService")
+    private let logger = Logger(subsystem: "com.mawn.Voicelite", category: "LocalTranscriptionService")
     private let modelsDirectory: URL
     private weak var whisperState: WhisperState?
     

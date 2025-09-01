@@ -3,7 +3,7 @@ import os
 
 class PromptDetectionService {
     private let logger = Logger(
-        subsystem: "com.mawn.voicelnklight",
+        subsystem: "com.mawn.Voicelite",
         category: "promptdetection"
     )
     

@@ -87,7 +87,7 @@ class BrowserURLService {
     static let shared = BrowserURLService()
     
     private let logger = Logger(
-        subsystem: "com.mawn.voicelnklight",
+        subsystem: "com.mawn.Voicelite",
         category: "browser.applescript"
     )
     

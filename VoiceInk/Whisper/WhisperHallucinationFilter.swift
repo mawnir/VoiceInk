@@ -2,7 +2,7 @@ import Foundation
 import os
 
 struct WhisperHallucinationFilter {
-    private static let logger = Logger(subsystem: "com.mawn.voicelnklight", category: "WhisperHallucinationFilter")
+    private static let logger = Logger(subsystem: "com.mawn.Voicelite", category: "WhisperHallucinationFilter")
     
     // Pattern-based approach for detecting hallucinations - focusing on format indicators
     private static let hallucinationPatterns = [

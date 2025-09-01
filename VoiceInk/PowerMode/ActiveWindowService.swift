@@ -10,7 +10,7 @@ class ActiveWindowService: ObservableObject {
     private var whisperState: WhisperState?
     
     private let logger = Logger(
-        subsystem: "com.mawn.voicelnklight",
+        subsystem: "com.mawn.Voicelite",
         category: "browser.detection"
     )
     

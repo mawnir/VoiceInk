@@ -239,7 +239,10 @@ struct OnboardingPermissionsView: View {
             }
             
             if showModelDownload {
-                OnboardingModelDownloadView(hasCompletedOnboarding: $hasCompletedOnboarding)
+//                OnboardingModelDownloadView(hasCompletedOnboarding: $hasCompletedOnboarding)
+//                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                
+                OnboardingTutorialView(hasCompletedOnboarding: $hasCompletedOnboarding)
                     .transition(.move(edge: .trailing).combined(with: .opacity))
             }
         }

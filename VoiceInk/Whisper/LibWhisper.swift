@@ -14,7 +14,7 @@ actor WhisperContext {
     private var prompt: String?
     private var promptCString: [CChar]?
     private var vadModelPath: String?
-    private let logger = Logger(subsystem: "com.mawn.voicelnklight", category: "WhisperContext")
+    private let logger = Logger(subsystem: "com.mawn.Voicelite", category: "WhisperContext")
 
     private init() {}
 

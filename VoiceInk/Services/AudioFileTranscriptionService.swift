@@ -12,7 +12,7 @@ class AudioTranscriptionService: ObservableObject {
     private let modelContext: ModelContext
     private let enhancementService: AIEnhancementService?
     private let whisperState: WhisperState
-    private let logger = Logger(subsystem: "com.mawn.voicelnklight", category: "AudioTranscriptionService")
+    private let logger = Logger(subsystem: "com.mawn.Voicelite", category: "AudioTranscriptionService")
     
     // Transcription services
     private let localTranscriptionService: LocalTranscriptionService
@@ -74,7 +74,7 @@ class AudioTranscriptionService: ObservableObject {
             
             // Create a permanent copy of the audio file
             let recordingsDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-                .appendingPathComponent("com.mawn.voicelnklight")
+                .appendingPathComponent("com.mawn.Voicelite")
                 .appendingPathComponent("Recordings")
             
             let fileName = "retranscribed_\(UUID().uuidString).wav"
