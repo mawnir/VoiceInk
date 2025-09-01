@@ -229,7 +229,7 @@ struct ContentView: View {
     private var detailView: some View {
         switch selectedView {
         case .metrics:
-            if isSetupComplete {
+            if !isSetupComplete {
                 MetricsView(skipSetupCheck: true)
             } else {
                 MetricsSetupView()
