@@ -5,9 +5,6 @@ import os
 
 class AudioDeviceConfiguration {
     private static let logger = Logger(subsystem: "com.mawn.voicelnklight", category: "AudioDeviceConfiguration")
-    
-
-
 
     static func getDefaultInputDevice() -> AudioDeviceID? {
         var defaultDeviceID = AudioDeviceID(0)

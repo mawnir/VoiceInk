@@ -1,6 +1,6 @@
 import SwiftUI
 import SwiftData
-import Sparkle
+import Sparkle //updater in bg not used
 import AppKit
 import OSLog
 import AppIntents
@@ -104,7 +104,7 @@ struct VoiceInkApp: App {
                     .environmentObject(enhancementService)
                     .modelContainer(container)
                     .onAppear {
-                        updaterViewModel.silentlyCheckForUpdates()
+                        //updaterViewModel.silentlyCheckForUpdates()
                         AnnouncementsService.shared.start()
                         
                         // Start the transcription auto-cleanup service (handles immediate and scheduled transcript deletion)
@@ -143,11 +143,11 @@ struct VoiceInkApp: App {
                     })
             }
         }
-        .commands {
-            CommandGroup(after: .appInfo) {
-                CheckForUpdatesView(updaterViewModel: updaterViewModel)
-            }
-        }
+//        .commands {
+//            CommandGroup(after: .appInfo) {
+//                CheckForUpdatesView(updaterViewModel: updaterViewModel)
+//            }
+//        }
         
         MenuBarExtra {
             MenuBarView()
@@ -187,7 +187,7 @@ class UpdaterViewModel: ObservableObject {
     @Published var canCheckForUpdates = false
     
     init() {
-        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+        updaterController = SPUStandardUpdaterController(startingUpdater: false, updaterDelegate: nil, userDriverDelegate: nil)
         
         // Enable automatic update checking
         updaterController.updater.automaticallyChecksForUpdates = autoUpdateCheck
