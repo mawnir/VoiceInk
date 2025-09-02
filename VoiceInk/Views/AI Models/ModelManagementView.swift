@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 
 enum ModelFilter: String, CaseIterable, Identifiable {
     case recommended = "Recommended"
-    case local = "Local"
+    //case local = "Local"
     case cloud = "Cloud"
     case custom = "Custom"
     var id: String { self.rawValue }
@@ -162,29 +162,29 @@ struct ModelManagementView: View {
                     }
                     
                     // Import button as a card at the end of the Local list
-                    if selectedFilter == .local {
-                        HStack(spacing: 8) {
-                            Button(action: { presentImportPanel() }) {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "square.and.arrow.down")
-                                    Text("Import Local Model…")
-                                        .font(.system(size: 12, weight: .semibold))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(16)
-                                .background(CardBackground(isSelected: false))
-                                .cornerRadius(10)
-                            }
-                            .buttonStyle(.plain)
-
-                            InfoTip(
-                                title: "Import local Whisper models",
-                                message: "Add a custom fine-tuned whisper model to use with VoiceInk. Select the downloaded .bin file.",
-                                learnMoreURL: "https://tryvoiceink.com/docs/custom-local-whisper-models"
-                            )
-                            .help("Read more about custom local models")
-                        }
-                    }
+//                    if selectedFilter == .local {
+//                        HStack(spacing: 8) {
+//                            Button(action: { presentImportPanel() }) {
+//                                HStack(spacing: 8) {
+//                                    Image(systemName: "square.and.arrow.down")
+//                                    Text("Import Local Model…")
+//                                        .font(.system(size: 12, weight: .semibold))
+//                                }
+//                                .frame(maxWidth: .infinity)
+//                                .padding(16)
+//                                .background(CardBackground(isSelected: false))
+//                                .cornerRadius(10)
+//                            }
+//                            .buttonStyle(.plain)
+//
+//                            InfoTip(
+//                                title: "Import local Whisper models",
+//                                message: "Add a custom fine-tuned whisper model to use with VoiceInk. Select the downloaded .bin file.",
+//                                learnMoreURL: "https://tryvoiceink.com/docs/custom-local-whisper-models"
+//                            )
+//                            .help("Read more about custom local models")
+//                        }
+//                    }
                     
                     if selectedFilter == .custom {
                         // Add Custom Model Card at the bottom
@@ -207,16 +207,16 @@ struct ModelManagementView: View {
         switch selectedFilter {
         case .recommended:
             return whisperState.allAvailableModels.filter {
-                let recommendedNames = ["ggml-base.en", "ggml-large-v3-turbo-q5_0", "ggml-large-v3-turbo", "whisper-large-v3-turbo"]
+                let recommendedNames = ["gemini-2.5-flash", "gemini-2.5-pro", "whisper-large-v3-turbo"]
                 return recommendedNames.contains($0.name)
             }.sorted { model1, model2 in
-                let recommendedOrder = ["ggml-base.en", "ggml-large-v3-turbo-q5_0", "ggml-large-v3-turbo", "whisper-large-v3-turbo"]
+                let recommendedOrder = ["gemini-2.5-flash", "gemini-2.5-pro", "whisper-large-v3-turbo"]
                 let index1 = recommendedOrder.firstIndex(of: model1.name) ?? Int.max
                 let index2 = recommendedOrder.firstIndex(of: model2.name) ?? Int.max
                 return index1 < index2
             }
-        case .local:
-            return whisperState.allAvailableModels.filter { $0.provider == .local || $0.provider == .nativeApple || $0.provider == .parakeet }
+//        case .local:
+//            return whisperState.allAvailableModels.filter { $0.provider == .local || $0.provider == .nativeApple || $0.provider == .parakeet }
         case .cloud:
             let cloudProviders: [ModelProvider] = [.groq, .elevenLabs, .deepgram, .mistral, .gemini]
             return whisperState.allAvailableModels.filter { cloudProviders.contains($0.provider) }

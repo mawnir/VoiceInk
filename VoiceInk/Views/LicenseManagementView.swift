@@ -66,21 +66,21 @@ struct LicenseManagementView: View {
                         }
                         .buttonStyle(.plain)
                         
-                        Button {
-                            if let url = URL(string: "https://discord.gg/xryDy57nYD") {
-                                NSWorkspace.shared.open(url)
-                            }
-                        } label: {
-                            featureItem(icon: "bubble.left.and.bubble.right.fill", title: "Discord", color: .purple)
-                        }
-                        .buttonStyle(.plain)
+//                        Button {
+//                            if let url = URL(string: "https://discord.gg/xryDy57nYD") {
+//                                NSWorkspace.shared.open(url)
+//                            }
+//                        } label: {
+//                            featureItem(icon: "bubble.left.and.bubble.right.fill", title: "Discord", color: .purple)
+//                        }
+//                        .buttonStyle(.plain)
                         
-                        Button {
-                            EmailSupport.openSupportEmail()
-                        } label: {
-                            featureItem(icon: "envelope.fill", title: "Email Support", color: .orange)
-                        }
-                        .buttonStyle(.plain)
+//                        Button {
+//                            EmailSupport.openSupportEmail()
+//                        } label: {
+//                            featureItem(icon: "envelope.fill", title: "Email Support", color: .orange)
+//                        }
+//                        .buttonStyle(.plain)
                         
                         Button {
                             if let url = URL(string: "https://tryvoiceink.com/docs") {
@@ -91,14 +91,14 @@ struct LicenseManagementView: View {
                         }
                         .buttonStyle(.plain)
                         
-                        Button {
-                            if let url = URL(string: "https://buymeacoffee.com/beingpax") {
-                                NSWorkspace.shared.open(url)
-                            }
-                        } label: {
-                            animatedTipJarItem()
-                        }
-                        .buttonStyle(.plain)
+//                        Button {
+//                            if let url = URL(string: "https://buymeacoffee.com/beingpax") {
+//                                NSWorkspace.shared.open(url)
+//                            }
+//                        } label: {
+//                            animatedTipJarItem()
+//                        }
+//                        .buttonStyle(.plain)
                     }
                     .padding(.top, 8)
                 }
@@ -262,6 +262,7 @@ struct LicenseManagementView: View {
                         .padding(.vertical, 8)
                 }
                 .buttonStyle(.bordered)
+                .disabled(true)
             }
             .padding(32)
             .background(CardBackground(isSelected: false))
