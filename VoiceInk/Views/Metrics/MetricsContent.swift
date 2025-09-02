@@ -45,7 +45,7 @@ struct MetricsContent: View {
                 color: .blue
             )
             MetricCard(
-                title: "VoiceInk Sessions",
+                title: "Voice Lite Sessions",
                 value: "\(transcriptions.count)",
                 icon: "mic.circle.fill",
                 color: .green

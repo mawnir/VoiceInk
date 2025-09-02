@@ -14,7 +14,7 @@ enum ViewType: String, CaseIterable {
     case audioInput = "Audio Input"
     case dictionary = "Dictionary"
     case settings = "Settings"
-    case license = "VoiceInk Pro"
+    case license = "Voice Lite Pro"
     
     var icon: String {
         switch self {
@@ -70,7 +70,7 @@ struct DynamicSidebar: View {
                         .cornerRadius(8)
                 }
                 
-                Text("VoiceInk Lite")
+                Text("Voice Lite")
                     .font(.system(size: 14, weight: .semibold))
                 
                 if case .licensed = licenseViewModel.licenseState {
@@ -203,7 +203,7 @@ struct ContentView: View {
                 case "AI Models":
                     print("ContentView: Navigating to AI Models")
                     selectedView = .models
-                case "VoiceInk Pro":
+                case "Voice Lite Pro":
                     print("ContentView: Navigating to VoiceInk Pro")
                     selectedView = .license
                 case "History":

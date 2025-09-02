@@ -239,11 +239,13 @@ struct OnboardingPermissionsView: View {
             }
             
             if showModelDownload {
-//                OnboardingModelDownloadView(hasCompletedOnboarding: $hasCompletedOnboarding)
-//                    .transition(.move(edge: .trailing).combined(with: .opacity))
+             //    OnboardingModelDownloadView(hasCompletedOnboarding: $hasCompletedOnboarding)
+             //          .transition(.move(edge: .trailing).combined(with: .opacity))
                 
-                OnboardingTutorialView(hasCompletedOnboarding: $hasCompletedOnboarding)
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                //OnboardingTutorialView(hasCompletedOnboarding: $hasCompletedOnboarding)
+                  //  .transition(.move(edge: .trailing).combined(with: .opacity))
+                ProgressView("Downloading…")
+                 
             }
         }
         .onAppear {
@@ -252,6 +254,12 @@ struct OnboardingPermissionsView: View {
             // Ensure audio devices are loaded
             audioDeviceManager.loadAvailableDevices()
         }
+        .onChange(of: showModelDownload) { oldValue, newValue in
+            if newValue {
+                hasCompletedOnboarding = true
+            }
+        }
+
     }
     
     private func animateIn() {

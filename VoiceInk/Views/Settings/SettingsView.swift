@@ -25,7 +25,7 @@ struct SettingsView: View {
             VStack(spacing: 24) {
                 SettingsSection(
                     icon: "command.circle",
-                    title: "VoiceInk Shortcuts",
+                    title: "Voice Lite Shortcuts",
                     subtitle: "Choose how you want to trigger VoiceInk"
                 ) {
                     VStack(alignment: .leading, spacing: 18) {

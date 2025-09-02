@@ -202,7 +202,7 @@ struct PermissionsView: View {
                     VStack(spacing: 8) {
                         Text("App Permissions")
                             .font(.system(size: 28, weight: .bold))
-                        Text("VoiceInk requires the following permissions to function properly")
+                        Text("Voice Lite requires the following permissions to function properly")
                             .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                     }
